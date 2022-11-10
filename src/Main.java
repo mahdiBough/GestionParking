@@ -86,6 +86,7 @@ class Emplacement{
            else {
                finH = finM/60;
                finM = finM % 60;
+
                return (finM != 0) ? finH*2 +15 +1: finH*2 +15;
 
            }
