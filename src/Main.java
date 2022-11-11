@@ -1,101 +1,50 @@
 import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Bienvenu");
+        Parking p = new Parking(5,5);
 
-class Vehicule{
-    private String mat;
-    private String marq;
-    private String typ;
-    Vehicule(String mt, String mr, String tp){
-        mat = mt;
-        marq = mr;
-        typ = tp;
-    }
-    public String toString(){
-        String ch="Matricule:"+mat+"Marque"+marq+"Type"+typ;
-        return ch;
-    }
-    String getType(){
-        return typ;
-    }
-    String getMarq(){
-        return marq;
-    }
-    String getMat(){
-        return mat;
+        Vehicule v1 = new Vehicule("aa22bbb", "dacia", "auto");
+        Vehicule v2 = new Vehicule("hh22yyy", "bmw", "moto");
+        Vehicule v3 = new Vehicule("kk22ggg", "ducati", "moto");
+        Vehicule v4 = new Vehicule("bb22sss", "tesla", "auto");
+        Vehicule v5 = new Vehicule("yy22bbb", "dacia", "auto");
+
+        Horaire acc1 = new Horaire(18, 30);
+        Horaire acc2 = new Horaire(18, 35);
+        Horaire acc3 = new Horaire(19, 30);
+        Horaire acc4 = new Horaire(22, 50);
+        Horaire acc5 = new Horaire(18, 40);
+
+        Horaire fin1 = new Horaire(19, 30);
+        Horaire fin2 = new Horaire(22, 35);
+        Horaire fin3 = new Horaire(23, 35);
+        Horaire fin4 = new Horaire(23, 53);
+        //Horaire fin5 = new Horaire(19, 44);
+
+        p.accederParking(v1, acc1);
+        p.accederParking(v2, acc2);
+        p.accederParking(v3, acc3);
+        p.accederParking(v4, acc4);
+        //p.accederParking(v5, acc5);
+        p.afficher();
+        System.out.println("+------------+"); // just pour afficher N'EST PAS important
+        System.out.println("num  Type  price"); // just pour afficher N'EST PAS important
+        //p.quitterParking(v1, fin1);
+        p.quitterParking(v2, fin2);
+        p.quitterParking(v3, fin3);
+        p.quitterParking(v4, fin4);
+        //p.quitterParking(v5, fin5);
+        System.out.println("+------------+"); // just pour afficher pas important
+
+        System.out.println("la recette totale du jour est :");
+
+        System.out.println(p.calculRecettes()+"dh");
+        // v1 =
+
     }
 }
-class Horaire{
-    private int heur;
-    private int minu;
-    Horaire(int h, int m){
-        heur = h;
-        minu = m;
-    }
-    public String toString(){
-        String ch = " "+heur+"heures"+minu+"Minutes";
-        return ch;
-    }
-    int getHeur(){
-        return heur;
-    }
-    int getMinu(){
-        return minu;
-    }
-}
-class Emplacement{
-    private static int num;
-    private boolean eta = true;
-    private Vehicule veh ;
-    private Horaire deb;
 
-    public Emplacement(int num, boolean eta, Vehicule veh, Horaire deb){
-        num++;
-        this.eta = eta;
-        this.veh = veh;
-        this.deb = deb;
-    }
-    int getNum(){
-        return num;
-    }
-    boolean getEta(){
-        return eta;
-    }
-    Vehicule getVeh(){
-        return veh;
-    }
-    Horaire getDeb(){
-        return deb;
-    }
-    public static String clavier(){
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
-    }
-    public void stationner(){
-        System.out.println("enter num :");
-
-
-        System.out.println("enter eta :");
-    }
-    int fraisStationnement(Horaire fin){
-        Horaire h =fin ;
-        int finM = h.getHeur()+h.getMinu();
-        int finH = 0;
-
-        if (finM >= 60){
-           finM = finM-60;
-           if (finM < 120) return 15;
-           else {
-               finH = finM/60;
-               finM = finM % 60;
-
-               return (finM != 0) ? finH*2 +15 +1: finH*2 +15;
-
-           }
-        }
-        else return 10;
-    }
-
-
-}
 
 
 
